@@ -1,48 +1,15 @@
 #!/bin/bash
+echo -n
+day=$(date +'%a')
 
-# ---------------------------------------------
-# Script Name: try.sh
-# Description: Prints days in current month and
-# determines whether a given year
-# is a Leap Year.
-# ---------------------------------------------
-
-# Get the current month number (1–12)
-MONTH=$(date +%m)
-
-# Determine how many days are in this month
-case $MONTH in
-01|03|05|07|08|10|12)
-DAYS=31
+case $day in
+Mon | Tue | Wed | Thu | Fri)
+echo "Today is a weekday"
 ;;
-04|06|09|11)
-DAYS=30
-;;
-02)
-DAYS=28 # For now; leap year check will follow
+Sat | Sun)
+echo "Today is the weekend"
 ;;
 *)
-echo "Error: Unknown month."
-exit 1
+echo "date not recognized"
 ;;
 esac
-
-# Display the number of days
-echo "$DAYS"
-echo "days are there in this month"
-echo ""
-
-# Ask the user for a year
-read -p "Enter Year (YYYY): " YEAR
-
-# Leap year logic
-if (( YEAR % 400 == 0 )); then
-echo "$YEAR is a Leap Year"
-elif (( YEAR % 100 == 0 )); then
-echo "$YEAR is NOT Leap Year"
-elif (( YEAR % 4 == 0 )); then
-echo "$YEAR is a Leap Year"
-else
-echo "$YEAR is NOT Leap Year"
-fi
-
