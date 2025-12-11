@@ -1,26 +1,48 @@
 #!/bin/bash
 
 # ---------------------------------------------
-# Script Name: rectangle.sh
-# Description: Calculates the area of a rectangle
-# Author: Durcklyne
+# Script Name: try.sh
+# Description: Prints days in current month and
+# determines whether a given year
+# is a Leap Year.
 # ---------------------------------------------
 
-# Assign integer values
-LENGTH=10
-WIDTH=5
+# Get the current month number (1–12)
+MONTH=$(date +%m)
 
-# Display values to the user
-echo "---------------------------------------------"
-echo " Rectangle Area Calculator "
-echo "---------------------------------------------"
-echo "Length: $LENGTH"
-echo "Width: $WIDTH"
+# Determine how many days are in this month
+case $MONTH in
+01|03|05|07|08|10|12)
+DAYS=31
+;;
+04|06|09|11)
+DAYS=30
+;;
+02)
+DAYS=28 # For now; leap year check will follow
+;;
+*)
+echo "Error: Unknown month."
+exit 1
+;;
+esac
 
-# Calculate area
-AREA=$((LENGTH * WIDTH))
+# Display the number of days
+echo "$DAYS"
+echo "days are there in this month"
+echo ""
 
-# Output the result
-echo "---------------------------------------------"
-echo "The area of the rectangle is: $AREA square units."
-echo "---------------------------------------------"
+# Ask the user for a year
+read -p "Enter Year (YYYY): " YEAR
+
+# Leap year logic
+if (( YEAR % 400 == 0 )); then
+echo "$YEAR is a Leap Year"
+elif (( YEAR % 100 == 0 )); then
+echo "$YEAR is NOT Leap Year"
+elif (( YEAR % 4 == 0 )); then
+echo "$YEAR is a Leap Year"
+else
+echo "$YEAR is NOT Leap Year"
+fi
+
