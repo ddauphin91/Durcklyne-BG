@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# ---------------------------------------------
+# Script Name: rectangle.sh
+# Description: Calculates the area of a rectangle
+# Author: Durcklyne
+# ---------------------------------------------
+
+# Assign integer values
+LENGTH=10
+WIDTH=5
+
+# Display values to the user
+echo "---------------------------------------------"
+echo " Rectangle Area Calculator "
+echo "---------------------------------------------"
+echo "Length: $LENGTH"
+echo "Width: $WIDTH"
+
+# Calculate area
+AREA=$((LENGTH * WIDTH))
+
+# Output the result
+echo "---------------------------------------------"
+echo "The area of the rectangle is: $AREA square units."
+echo "---------------------------------------------"
